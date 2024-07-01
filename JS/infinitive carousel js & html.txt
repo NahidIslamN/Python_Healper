@@ -1,0 +1,58 @@
+                                                                                   For Infinitive Carousel
+
+		In your JS File...
+
+
+var carousel = new bootstrap.Carousel(document.getElementById('carouselExampleCaptions'), {
+    interval: false
+});
+
+document.getElementById('carouselExampleCaptions').addEventListener('slide.bs.carousel', function (evt) {
+    var activeIndex = evt.to;
+    var slidesLength = evt.target.querySelectorAll('.carousel-item').length;
+
+    if (activeIndex === slidesLength - 1) {
+        // If the last slide is reached, loop back to the first slide
+        carousel.to(0);
+    }
+});
+
+
+
+
+
+
+
+
+		HTML File ...............
+
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+      {% for slide in index_slider %}
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %} class="active" {% endif %}></button>
+      {% endfor %}
+  </div>
+  <div class="carousel-inner">
+      {% for slide in index_slider %}
+      <div class="carousel-item {% if forloop.first %} active {% endif %}">
+          <img src="{{ slide.slide_image.url }}" class="d-block w-100" alt="carouselImage">
+          <div class="carousel-caption d-none d-md-block">
+              <h2 class="text-white bg-primary bg-opacity-50 p-3 w-50 ms-auto me-auto">{{ slide.Slide_Title }}</h2>
+              <div class="text-white bg-danger p-3 w-75 ms-auto me-auto shadow-lg">{{ slide.Slide_discription }}</div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<script src="/static/myassets/scripts.js" ></script>
+

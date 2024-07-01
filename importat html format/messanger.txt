@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block start %}
+
+ <div class="container">
+    <div class="row">
+        <div style="margin-left: auto;" class="col-8 mt-3 mb-2 p-5">
+            <h1>Messages</h1>
+            <hr>
+            <div style="height: 400px; overflow-y: auto;" class="message-container">
+                {% if messages %}
+                    {% for x in messages %}
+                        <div class="message {% if x.from_sender == user %}sent{% else %}received{% endif %}">
+                            <p>{{ x.message_text }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                <p style="text-align: center;">message get before</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

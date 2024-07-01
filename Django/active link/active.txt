@@ -1,0 +1,24 @@
+python -m pip install django-active-link
+
+
+after  installing in setting.py then use it ( install it in setting.py installed app )
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'baseapp',
+    'active_link',    
+]
+
+
+load this tag in html file and use... active link 
+
+{% load active_link_tags %}
+
+
+user this syntax
+
+class="{% active_link 'hodhomepage' 'active' %}"
